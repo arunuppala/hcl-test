@@ -46,6 +46,9 @@ jobs:
         working-directory: ${{ env.TF_PATH }}
         run: terraform validate
 
+      - name: access test
+        run: aws s3 ls s3://terraform-hcl-test-state/terraform.tfstate --region us-east-1
+
       - name: Terraform Plan
         working-directory: ${{ env.TF_PATH }}
         run: |
