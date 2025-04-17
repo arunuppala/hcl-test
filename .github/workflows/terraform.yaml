@@ -48,8 +48,9 @@ jobs:
 
       - name: Terraform Plan
         working-directory: ${{ env.TF_PATH }}
-        # run: terraform plan -out=tfplan --var-file=dev.tfvars
-        run: terraform plan -out=tfplan --var-file=dev.tfvars -no-color -debug
+        run: |
+          export TF_LOG=DEBUG
+          terraform plan -out=tfplan --var-file=dev.tfvars
 
       # - name: Terraform Apply
       #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
