@@ -1,9 +1,9 @@
 resource "aws_s3_bucket" "state" {
-  bucket = "my-tf-test-bucket"
+  bucket        = "my-tf-test-bucket"
   force_destroy = true
 
   tags = {
-    Name        = "My bucket"
+    Name = "My bucket"
   }
 
   lifecycle {
@@ -12,10 +12,10 @@ resource "aws_s3_bucket" "state" {
 }
 
 resource "aws_s3_bucket_versioning" "name" {
-    bucket = aws_s3_bucket.state.id
-    versioning_configuration {
+  bucket = aws_s3_bucket.state.id
+  versioning_configuration {
     status = "Enabled"
-    }
+  }
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "tf_state" {
@@ -30,10 +30,10 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "tf_state" {
 
 terraform {
   backend "s3" {
-    bucket         = "terraform-state-bucket"
-    key            = "terraform.tfstate"
-    region         = "ap-south-1"
-    encrypt        = true
-    use_lockfile   = true
+    bucket       = "terraform-state-bucket"
+    key          = "terraform.tfstate"
+    region       = "ap-south-1"
+    encrypt      = true
+    use_lockfile = true
   }
 }

@@ -100,6 +100,6 @@ module "eks" {
   }
 
   tags = {
-    Terraform   = "true"
+    Terraform = "true"
   }
 }
