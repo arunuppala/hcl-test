@@ -1,3 +1,30 @@
+resource "aws_security_group" "additional" {
+  name        = "${var.env}-eks-ng"
+  description = "Additional security group for EKS node groups"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress {
+    description = "Allow all traffic within VPC"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = [module.vpc.vpc_cidr_block]
+  }
+
+  egress {
+    description = "Allow all outbound"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name        = "${var.env}-eks-sg"
+    Environment = var.env
+  }
+}
+
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
 
