@@ -1,5 +1,5 @@
 # resource "aws_s3_bucket" "state" {
-#   bucket        = "terraform-state-bucket"
+#   bucket        = "terraform-hcl-test-state"
 #   force_destroy = true
 
 #   tags = {
@@ -30,7 +30,7 @@
 
 terraform {
   backend "s3" {
-    bucket       = "terraform-state-bucket"
+    bucket       = "terraform-hcl-test-state"
     key          = "terraform.tfstate"
     region       = "us-east-1"
     encrypt      = true
