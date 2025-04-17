@@ -22,9 +22,16 @@ jobs:
       #     username: ${{ secrets.DOCKERHUB_USERNAME }}
       #     password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: 📦 Build and push Docker image
+      - name: 📦 Build and push appointment-service image
         uses: docker/build-push-action@v5
         with:
           context: ./appointment-service
           push: false #true
           tags: test/appointment-service:latest
+
+      - name: 📦 Build and push patient-service image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./patient-service
+          push: false #true
+          tags: test/patient-service:latest
