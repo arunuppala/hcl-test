@@ -1,14 +1,15 @@
 {
-  "name": "appointment-service",
+  "name": "patient-service",
   "version": "1.0.0",
-  "description": "appointment service",
-  "main": "appointment-service.js",
+  "main": "patient-service.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "express": "5.1.0"
   },
+  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": ""
 }
