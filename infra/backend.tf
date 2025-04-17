@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "state" {
-  bucket        = "my-tf-test-bucket"
+  bucket        = "terraform-state-bucket"
   force_destroy = true
 
   tags = {
