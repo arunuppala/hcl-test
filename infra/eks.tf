@@ -27,7 +27,6 @@ resource "aws_security_group" "additional" {
 
 module "eks" {
   source                          = "terraform-aws-modules/eks/aws"
-  version                         = "~> 20.0"
   cluster_name                    = "${var.env}-cluster"
   cluster_version                 = "1.29"
   cluster_endpoint_private_access = true
@@ -42,16 +41,6 @@ module "eks" {
       resolve_conflicts = "OVERWRITE"
     }
   }
-
-  manage_aws_auth_configmap = true
-
-  aws_auth_users = [
-    {
-      userarn  = "arn:aws:iam::049681096580:user/hcl_admin"
-      username = "hcl_admin"
-      groups   = ["system:masters"]
-    }
-  ]
 
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
