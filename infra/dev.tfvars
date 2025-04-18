@@ -1,3 +1,3 @@
 env = "dev"
 
-app_name = [ "appointment-service", "patient-service" ]
+app_name = ["appointment-service", "patient-service"]
