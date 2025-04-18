@@ -19,7 +19,9 @@ module "vpc" {
 module "ecr" {
   source = "terraform-aws-modules/ecr/aws"
 
-  repository_name = "hcl-test"
+  count = length(var.app_name)
+
+  repository_name = var.app_name[count.index]
 
   # repository_read_write_access_arns = ["arn:aws:iam::012345678901:role/terraform"]
   repository_lifecycle_policy = jsonencode({
