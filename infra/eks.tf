@@ -26,8 +26,8 @@ resource "aws_security_group" "additional" {
 }
 
 module "eks" {
-  source = "terraform-aws-modules/eks/aws"
-  version = "~> 20.0"  
+  source                          = "terraform-aws-modules/eks/aws"
+  version                         = "~> 20.0"
   cluster_name                    = "${var.env}-cluster"
   cluster_version                 = "1.29"
   cluster_endpoint_private_access = true
@@ -52,7 +52,7 @@ module "eks" {
       groups   = ["system:masters"]
     }
   ]
-  
+
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
 
