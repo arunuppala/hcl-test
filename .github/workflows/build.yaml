@@ -1,9 +1,9 @@
 name: Build and Push Node.js Docker Image
 
-# on:
-  # push:
-  #   branches:
-  #     - main  # or 'master' or any branch you want to trigger this from
+on:
+  push:
+    branches:
+      - main  # or 'master' or any branch you want to trigger this from
 
 jobs:
   build:
@@ -26,12 +26,12 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./appointment-service
-          push: false #true
-          tags: test/appointment-service:latest
+          push: true #true
+          tags: 049681096580.dkr.ecr.us-west-2.amazonaws.com/appointment-service:latest
 
       - name: 📦 Build and push patient-service image
         uses: docker/build-push-action@v5
         with:
           context: ./patient-service
-          push: false #true
-          tags: test/patient-service:latest
+          push: true #true
+          tags: 049681096580.dkr.ecr.us-west-2.amazonaws.com/patient-service:latest
