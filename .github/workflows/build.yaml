@@ -1,12 +1,14 @@
 name: Build and Push Node.js Docker Image
 
 on:
-  push:
-    branches:
-      - main  # or 'master' or any branch you want to trigger this from
+  # push:
+  #   branches:
+  #     - main  # or 'master' or any branch you want to trigger this from
+  workflow_dispatch: 
 
 env:
-  AWS_REGION: us-west-2  # Change to your region
+  AWS_REGION: us-west-2  # Change to your _
+  AWS_REGISTRY: 049681096580.dkr.ecr.us-west-2.amazonaws.com # Change to your AWS ECR registry URL
 
 jobs:
   build:
@@ -40,12 +42,12 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./appointment-service
-          push: true #true
-          tags: 049681096580.dkr.ecr.us-west-2.amazonaws.com/appointment-service:latest
+          push: true
+          tags: ${{ env.AWS_REGISTRY }}/appointment-service:latest
 
       - name: 📦 Build and push patient-service image
         uses: docker/build-push-action@v5
         with:
           context: ./patient-service
-          push: true #true
-          tags: 049681096580.dkr.ecr.us-west-2.amazonaws.com/patient-service:latest
+          push: true
+          tags: ${{ env.AWS_REGISTRY }}/patient-service:latest
