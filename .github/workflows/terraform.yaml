@@ -57,4 +57,4 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         working-directory: ${{ env.TF_PATH }}
-        run: terraform apply -auto-approve --var-file=dev.tfvars
+        run: terraform destroy -auto-approve --var-file=dev.tfvars
