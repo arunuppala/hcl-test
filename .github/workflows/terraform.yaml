@@ -10,7 +10,7 @@ on:
 
 env:
   TF_VERSION: "1.11.4"
-  AWS_REGION: "us-east-1"  # Change to your region
+  AWS_REGION: "us-west-2"  # Change to your region
   TF_PATH: infra
 
 jobs:
@@ -47,7 +47,7 @@ jobs:
         run: terraform validate
 
       - name: access test
-        run: aws s3 ls s3://terraform-hcl-test-state/terraform.tfstate --region us-east-1
+        run: aws s3 ls s3://terraform-hcl-test-state2/terraform.tfstate --region us-west-2
 
       - name: Terraform Plan
         working-directory: ${{ env.TF_PATH }}

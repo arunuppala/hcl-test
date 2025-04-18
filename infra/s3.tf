@@ -1,5 +1,5 @@
 # resource "aws_s3_bucket" "state" {
-#   bucket        = "terraform-hcl-test-state"
+#   bucket        = "terraform-hcl-test-state2"
 #   force_destroy = true
 
 #   tags = {
