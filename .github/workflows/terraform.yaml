@@ -54,7 +54,7 @@ jobs:
         run: |
           terraform plan -out=tfplan --var-file=dev.tfvars
 
-      # - name: Terraform Apply
-      #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      #   working-directory: ${{ env.TF_PATH }}
-      #   run: terraform apply -auto-approve --var-file=dev.tfvars
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        working-directory: ${{ env.TF_PATH }}
+        run: terraform apply -auto-approve --var-file=dev.tfvars
